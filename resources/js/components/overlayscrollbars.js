@@ -1,4 +1,4 @@
-import { OverlayScrollbars  } from 'overlayscrollbars'
+import { OverlayScrollbars  } from 'overlayscrollbars';
 
 const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
       const Default = {
@@ -8,10 +8,8 @@ const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
       };
       document.addEventListener('DOMContentLoaded', function () {
         const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-        if (
-            sidebarWrapper
-        ) {
-          OverlayScrollbars(sidebarWrapper, {
+        if (sidebarWrapper) {
+         OverlayScrollbars(sidebarWrapper, {
             scrollbars: {
               theme: Default.scrollbarTheme,
               autoHide: Default.scrollbarAutoHide,
@@ -19,4 +17,4 @@ const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
             },
           });
         }
-      });
+    });

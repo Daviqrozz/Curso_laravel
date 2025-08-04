@@ -1,3 +1,8 @@
-import '../../node_modules/bootstrap/js/index.esm';
+import.meta.glob([
+  '../images/**',
+  '../fonts/**',
+]);
+
+import 'bootstrap/dist/js/bootstrap.esm.js';
 import 'admin-lte';
-import './overlayscrollbars'
+import './components/overlayscrollbars';

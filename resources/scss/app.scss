@@ -1,5 +1,10 @@
 
-@use '../../node_modules/bootstrap/scss/bootstrap.scss';
-@use '../../node_modules/admin-lte/src/scss/adminlte.scss';
-@use '../../node_modules/overlayscrollbars/styles/overlayscrollbars.css';
-@use '../../node_modules/bootstrap-icons/font/bootstrap-icons.scss' 
+@use "../../node_modules/bootstrap/scss/bootstrap";
+@use "../../node_modules/admin-lte/src/scss/adminlte.scss";
+@use "../../node_modules/overlayscrollbars/styles/overlayscrollbars.css";
+
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
+
+@import "bootstrap-icons/font/bootstrap-icons";
+
+
