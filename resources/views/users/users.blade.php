@@ -3,13 +3,20 @@
 @section('page-title','Usuarios')
 
 @section('content')
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 
 <div>
-   <h2>Lista de</h2>
     <table class="table">
+
          <div class="d-flex justify-content-between">
+
         <h2>Usuarios</h2>
-        <button class="btn btn-success"><i class="bi bi-person-plus"></i></button>
+        <a href="{{route('create_user')}}"><button class="btn btn-success"><i class="bi bi-person-plus"></i></button></a>
+
     </div>
   <thead>
     <tr>
