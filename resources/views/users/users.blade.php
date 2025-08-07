@@ -33,12 +33,14 @@
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>
-                <button class="btn btn-primary">
-                    <i class="bi bi-pencil-square"></i>
-                </button>
-                <button class="btn btn-danger">
-                    <i class="bi bi-person-dash"></i>
-                </button>
+                  <form action="{{route('edit_user',$user->id)}}">
+                    <button class="bi bi-pencil-square btn btn-primary"></button>
+                  </form>
+
+                <form action="{{route('delete_user',$user->id)}}">
+                  <button  type="submit" class="bi-person-dash btn btn-danger" id="DeleteButton"></button>
+              </form>
+
             </td>
         @endforeach
     </tr>

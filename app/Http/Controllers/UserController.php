@@ -32,4 +32,13 @@ class UserController extends Controller
 
         return redirect()->route('users')->with('status','Usuario criado com sucesso');
     }
+
+    public function edit_user(User $user){
+        dd($user);
+    }
+    
+    public function delete_user(User $user) {
+        $user->delete();
+        return back()-with('status','usuario deletado com sucesso');
+    }
 }
