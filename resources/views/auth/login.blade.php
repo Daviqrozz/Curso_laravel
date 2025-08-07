@@ -5,7 +5,6 @@
       <div class="login-logo">
         <a href="{{route('login')}}"><b>Log</b>in</a>
       </div>
-    
       <div class="card">
         <div class="card-body login-card-body">
           <p class="login-box-msg">Preencha os dados para iniciar a sessão</p>
@@ -38,13 +37,10 @@
               <div class="">
                 <div class="d-grid gap-2">
                   <button type="submit" class="btn btn-primary">Sign In</button>
+                  <a href="{{route('register')}}" class="text-center">Nao possui uma conta?</a>
                 </div>
               </div>
-              <div class="text-center">
-                <a href="">Esqueceu a senha?</a>
-                <br>
-                <a href="{{route('register')}}">Nao possui uma conta?</a>
-              </div>
+     
             </div>
           
           </form>

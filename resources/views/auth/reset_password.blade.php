@@ -1,1 +1,1 @@
-Reset pássword
+Reset password

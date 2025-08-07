@@ -10,7 +10,7 @@
 
   <div class="card">
     <div class="card-body register-card-body">
-      <p class="register-box-msg">Register a new membership</p>
+      <p class="register-box-msg">Registrar uma nova conta</p>
 
       {{-- Exibe erros de validação --}}
       @if ($errors->any())
@@ -48,10 +48,9 @@
         </div>
 
         <div class="row">
-          <div class="col-8"></div>
-          <div class="col-4">
             <div class="d-grid gap-2">
               <button type="submit" class="btn btn-primary btn-block">Register</button>
+              <a class="text-center" href="{{route('login')}}">Não possui uma conta?</a>
             </div>
           </div>
         </div>
