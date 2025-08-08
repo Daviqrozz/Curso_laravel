@@ -403,11 +403,11 @@
                         <div class="text-white">Sales</div>
                       </div>
                     </div>
-                    <!--end::Row-->
+
                   </div>
                 </div>
               </div>
-              <!-- /.Start col -->
+    
             </div>
-            <!-- /.row (main row) -->
+            
 @endsection

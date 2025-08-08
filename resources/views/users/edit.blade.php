@@ -1,6 +1,14 @@
 @extends('layouts.base')
 
 @section('content')
+
+    @section('content')
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
     <form action="{{route('update_user',$user->id)}}" method="POST">
     @csrf
     @method('PUT')
