@@ -10,7 +10,7 @@
 
   <div class="card">
     <div class="card-body register-card-body">
-      <p class="register-box-msg">Register a new membership</p>
+      <p class="register-box-msg">Registrar uma nova conta</p>
 
       {{-- Exibe erros de validação --}}
       @if ($errors->any())
@@ -28,12 +28,12 @@
         @csrf
 
         <div class="input-group mb-3">
-          <input name="name" type="text" class="form-control" placeholder="Full Name" required autofocus>
+          <input name="name" type="text" class="form-control" placeholder="Full Name" required autofocus value="{{old('name')}}">
           <div class="input-group-text"><span class="bi bi-person"></span></div>
         </div>
 
         <div class="input-group mb-3">
-          <input name="email" type="email" class="form-control" placeholder="Email" required>
+          <input name="email" type="email" class="form-control" placeholder="Email" required value="{{old('email')}}">>
           <div class="input-group-text"><span class="bi bi-envelope"></span></div>
         </div>
 
@@ -48,10 +48,9 @@
         </div>
 
         <div class="row">
-          <div class="col-8"></div>
-          <div class="col-4">
             <div class="d-grid gap-2">
               <button type="submit" class="btn btn-primary btn-block">Register</button>
+              <a class="text-center" href="{{route('login')}}">Não possui uma conta?</a>
             </div>
           </div>
         </div>

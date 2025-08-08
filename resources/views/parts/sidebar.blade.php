@@ -9,7 +9,7 @@
               alt="AdminLTE Logo"
               class="brand-image opacity-75 shadow"
             />
-            <span class="brand-text fw-light">Logo</span>
+            <span class="brand-text fw-light">dminer</span>
            
           </a>
          

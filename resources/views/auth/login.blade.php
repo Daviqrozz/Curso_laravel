@@ -3,12 +3,11 @@
 @section('body-class', 'login-page')
      <div class="login-box">
       <div class="login-logo">
-        <a href="../index2.html"><b>Admin</b>LTE</a>
+        <a href="{{route('login')}}"><b>Log</b>in</a>
       </div>
-    
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
+          <p class="login-box-msg">Preencha os dados para iniciar a sessão</p>
 
                  @if ($errors->any())
                     <div class="alert alert-danger">
@@ -38,6 +37,7 @@
               <div class="">
                 <div class="d-grid gap-2">
                   <button type="submit" class="btn btn-primary">Sign In</button>
+                  <a href="{{route('register')}}" class="text-center">Nao possui uma conta?</a>
                 </div>
               </div>
      
