@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
@@ -34,30 +35,46 @@ class UserController extends Controller
     }
     
     public function edit_user(User $user){
+        $user->load('profile');
 
         return view('users.edit',[
             'user' => $user
         ]);
     }
 
-public function update_user(User $user, Request $request)
-{
-    $validated = $request->validate([
-        'name' => 'required',
-        'email' => 'required|email',
-        'password' => 'nullable|min:6'
-    ]);
+    public function update_user(User $user, Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6'
+        ]);
 
-    if (empty($validated['password'])) {
-        unset($validated['password']);
-    } else {
-        $validated['password'] = bcrypt($validated['password']);
+        if (empty($validated['password'])) {
+            unset($validated['password']);
+        } else {
+            $validated['password'] = bcrypt($validated['password']);
+        }
+
+        $user->fill($validated)->save();
+
+        return back()->with('status', 'Usuário editado com sucesso');
     }
 
-    $user->fill($validated)->save();
+    public function update_profile(User $user, Request $request) {
 
-    return back()->with('status', 'Usuário editado com sucesso');
-}
+      $validated = $request->validate([
+         'type' => 'required',
+         'address' => 'required',
+     ]);
+
+        $user->profile()->updateOrCreate(
+        ['user_id' => $user->id],
+        $validated
+        );
+
+        return back()->with('status', 'Usuário editado com sucesso');
+    }
 
 
     public function delete_user(User $user){
