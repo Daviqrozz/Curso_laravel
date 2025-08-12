@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group(function(){
         Route::put('/users/{user}',[UserController::class,'update_user'])->name('update_user');
         Route::put('/users/{user}/profile',[UserController::class,'update_profile'])->name('update_profile');
         Route::put('/users/{user}/interests',[UserController::class,'update_interests'])->name('update_interests');
+        Route::put('/users/{user}/roles',[UserController::class,'update_roles'])->name('update_roles');
         //Rota de exclusão de usuario
         Route::delete('/users/{user}',[UserController::class,'delete_user'])->name('delete_user');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Auth\Events\Validated;
@@ -49,9 +50,10 @@ class UserController extends Controller
     
     public function edit_user(User $user){
         $user->load(['profile','interests']);
-
+        $roles = Role::all();
         return view('users.edit',[
-            'user' => $user
+            'user' => $user,
+            'roles' => $roles
         ]);
     }
 
@@ -103,6 +105,16 @@ class UserController extends Controller
 
         return back()->with('status','Interesses editado com sucesso');
 
+    }
+
+    public function update_roles(User $user,Request $request){
+
+         $validated = $request->validate([
+            'roles' => 'required|array'
+        ]);
+
+        $user->roles()->sync($validated['roles']);
+        return back()->with('status','Cargos editado com sucesso');
     }
 
     public function delete_user(User $user){

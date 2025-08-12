@@ -1,29 +1,30 @@
 
 <div class="card">
     <div class="card-header">
-        <h5 class="mb-0">Interesses</h5>
+        <h5 class="mb-0">Cargos</h5>
     </div>
-
+ 
     <div class="card-body">
-        <form action="{{route('update_interests',$user->id)}}" method="POST">
+        <form action="{{route('update_roles',$user->id)}}" method="POST">
         @csrf
         @method('PUT')
       
-        @foreach (['Carro','Moto','Caminhão'] as $item)
+        @foreach ($roles as $role)
                
         <div class="mb-3 form-check">
-        <input class="form-check-input @error('interests') is-invalid @enderror"
-        type="checkbox" name="interests[][name]"
-        value="{{$item}}"
+        <input class="form-check-input @error('roles') is-invalid @enderror"
+        type="checkbox" 
+        name="roles[]"
+        value="{{$role->id}}"
         id="checkDefault"
-        @checked(in_array($item,$user->interests->pluck('name')->toArray()))
+        @checked(in_array($role->name,$user->roles->pluck('name')->toArray()))
         >
         <label class="form-check-label" for="checkDefault">
-        {{$item}}
+        {{$role->name}}
         </label>
         @if($loop -> last)
 
-            @error('interests')
+            @error('roles')
 
             <div class="invalid-feedback">
                 {{$message}}
