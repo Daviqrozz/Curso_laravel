@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -22,14 +23,26 @@ class UserController extends Controller
     }
 
     public function store_user(Request $request){
-
-        $input = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6'
+        
+    //Uso do db:transaction para criar usuario e preencher os campos de perfil como null, para habilitar a edição    
+    DB::transaction(function () use ($request) {
+        // 1. Cria o usuário
+        $user = User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => bcrypt($request->password),
         ]);
 
-        User::create($input);
+        // 2. Cria o perfil
+        $user->profile()->create([
+            'address' => $request->address,
+            'type'    => $request->type,
+        ]);
+        //3.Cria os interesses
+        $user->interests()->create([
+            'interests' => $request->name
+        ]);
+    });
 
         return redirect()->route('users')->with('status','Usuario criado com sucesso');
     }
@@ -64,8 +77,8 @@ class UserController extends Controller
     public function update_profile(User $user, Request $request) {
 
       $validated = $request->validate([
-         'type' => 'required',
-         'address' => 'required',
+         'type' => 'nullable',
+         'address' => 'nullable',
      ]);
 
         $user->profile()->updateOrCreate(
@@ -88,12 +101,9 @@ class UserController extends Controller
             $user->interests()->createMany($validated['interests']);
         }
 
-        
-
         return back()->with('status','Interesses editado com sucesso');
 
     }
-
 
     public function delete_user(User $user){
         $user->delete();
