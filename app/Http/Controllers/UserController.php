@@ -35,7 +35,7 @@ class UserController extends Controller
     }
     
     public function edit_user(User $user){
-        $user->load('profile');
+        $user->load(['profile','interests']);
 
         return view('users.edit',[
             'user' => $user
@@ -73,7 +73,25 @@ class UserController extends Controller
         $validated
         );
 
-        return back()->with('status', 'Usuário editado com sucesso');
+        return back()->with('status', 'Perfil editado com sucesso');
+    }
+
+    public function update_interests(User $user,Request $request){
+
+        $validated = $request->validate([
+            'interests' => 'nullable|array'
+        ]);
+
+        $user->interests()->delete();
+
+        if (!empty($validated['interests'])) {
+            $user->interests()->createMany($validated['interests']);
+        }
+
+        
+
+        return back()->with('status','Interesses editado com sucesso');
+
     }
 
 

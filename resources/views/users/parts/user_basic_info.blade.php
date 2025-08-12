@@ -8,9 +8,7 @@
             @csrf
             @method('PUT')
 
-            <div class="d-flex justify-content-between mb-3">
-                <h2>Edição de usuário</h2>
-            </div>
+       
 
             <div class="mb-3">
                 <label for="exampleInputName" class="form-label">Nome</label>

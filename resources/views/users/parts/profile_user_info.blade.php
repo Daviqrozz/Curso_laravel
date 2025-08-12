@@ -8,16 +8,14 @@
             @csrf
             @method('PUT')
 
-            <div class="d-flex justify-content-between mb-3">
-                <h2>Edição de usuário</h2>
-            </div>
 
             <div class="mb-3">
                 <label for="exampleInputaddress" class="form-label">Endereço</label>
                 <input name="address" 
                        type="text" 
                        class="form-control @error('address') is-invalid @enderror"  
-                       id="exampleInputadress">
+                       id="exampleInputadress"
+                       value={{$user->profile->address}}>
                 @error('address')
                     <div class="invalid-feedback">
                         {{ $message }}
