@@ -30,10 +30,8 @@
             <td>{{ $user->email }}</td>
             <td class="d-flex gap-1">
               
-               
                     <a href="{{route('edit_user',$user->id)}}"><i class="btn btn-primary bi bi-pencil-square"></i></a>
                
-
                 <form action="{{ route('delete_user', $user->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -44,8 +42,11 @@
             </td>
         </tr>
     @endforeach
+
 </tbody>
 
 </table>
+{{ $users->links('pagination::bootstrap-5') }}
+
 </div>
 @endsection
