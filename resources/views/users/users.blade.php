@@ -8,12 +8,33 @@
         {{ session('status') }}
     </div>
 @endif
+
+
 <div>
-    <table class="table">
-         <div class="d-flex justify-content-between">
+
+    <div class="d-flex justify-content-between">
         <h2>Usuarios</h2>
         <a href="{{route('create_user')}}"><button class="btn btn-success"><i class="bi bi-person-plus"></i></button></a>
     </div>
+
+    <form action="{{route('users')}}" method="GET"
+            class="mb-3" style="width: 25%">
+        <div class="input-group input-group-m">
+
+        <input type="text" 
+            name="keyword" 
+            id="searchInput"
+            placeholder="Pesquise pelo Nome ou Email"
+            class=" form-control"
+            value="{{request()->keyword}}">
+        <button class="btn btn-primary" type="submit">Pesquisar</button>
+
+        </div>
+
+    </form>
+    
+    <table class="table">
+
   <thead>
     <tr>
       <th scope="col">Codigo</th>
