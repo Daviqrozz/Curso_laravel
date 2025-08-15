@@ -18,7 +18,7 @@
     </div>
 
     <form action="{{route('users')}}" method="GET"
-            class="mb-3" style="width: 25%">
+            class="mb-3" style="width: 30%">
         <div class="input-group input-group-m">
 
         <input type="text" 
@@ -48,18 +48,23 @@
         <tr>
             <th scope="row">{{ $user->id }}</th>
             <td>{{ $user->name }}</td>
+            
             <td>{{ $user->email }}</td>
             <td class="d-flex gap-1">
-              
-                    <a href="{{route('edit_user',$user->id)}}"><i class="btn btn-primary bi bi-pencil-square"></i></a>
-               
-                <form action="{{ route('delete_user', $user->id) }}" method="POST">
+                @can('edit', App\Models\User::class)
+                     <a href="{{route('edit_user',$user->id)}}"><i class="btn btn-primary bi bi-pencil-square"></i></a>
+                @endcan
+                   <br>
+                @can('delete',App\Models\User::class)
+                    <form action="{{ route('delete_user', $user->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">
                         <i class="bi bi-person-dash"></i>
                     </button>
                 </form>
+                @endcan
+        
             </td>
         </tr>
     @endforeach

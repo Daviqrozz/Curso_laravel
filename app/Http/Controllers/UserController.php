@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserProfile;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -58,6 +59,9 @@ class UserController extends Controller
     }
     
     public function edit_user(User $user){
+        
+        Gate::authorize('edit',User::class);
+        
         $user->load(['profile','interests']);
         $roles = Role::all();
         return view('users.edit',[
